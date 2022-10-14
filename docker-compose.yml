@@ -32,6 +32,7 @@ services:
     ports:
         - 30303:30303/tcp
         - 30303:30303/udp
+        - 127.0.0.1:8545:8545/tcp
     command: >-
       --http
       --http.addr=0.0.0.0
