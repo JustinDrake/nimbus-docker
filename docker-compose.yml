@@ -26,6 +26,7 @@ services:
   geth:
     image: ethereum/client-go:${GETH_VERSION}
     container_name: geth
+    stop_grace_period: 3m
     volumes:
         - ${EXECUTION_DATA}:/var/lib/goethereum
         - ./secrets/jwtsecret:/var/lib/goethereum/ee-secret/jwtsecret:ro
