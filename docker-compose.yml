@@ -27,7 +27,7 @@ services:
     image: ethereum/client-go:${GETH_VERSION}
     container_name: geth
     volumes:
-        - ${EXECUTION_DATA}:/root/.ethereum
+        - ${EXECUTION_DATA}:/var/lib/goethereum
         - ./secrets/jwtsecret:/var/lib/goethereum/ee-secret/jwtsecret:ro
     ports:
         - 30303:30303/tcp
