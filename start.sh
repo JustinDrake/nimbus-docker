@@ -6,11 +6,11 @@ set -a
 
 source .env
 
-services="nimbus nethermind"
+services="nimbus geth"
 
 if [ "$ENABLE_MEVBOOST" != "" ]; then
     NIMBUS_MEVBOOST_FLAGS="--payload-builder --payload-builder-url=http://mevboost:18550"
-    services="nimbus nethermind mevboost"
+    services="nimbus geth mevboost"
 fi
 
 if [ "$#" -eq 1 ]; then
