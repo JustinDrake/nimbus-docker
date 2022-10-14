@@ -1,0 +1,32 @@
+version: "3.0"
+
+services:
+  geth:
+    image: ethereum/client-go:${GETH_VERSION}
+    container_name: geth
+    volumes:
+        - ${GETH_DATA}:/root/.ethereum
+        - ./secrets/jwtsecret:/var/lib/goethereum/ee-secret/jwtsecret:ro
+    ports:
+        - 30303:30303/tcp
+        - 30303:30303/udp
+    command: >-
+      --http
+      --http.addr=0.0.0.0
+      --http.vhosts=*
+      --http.corsdomain=*
+      --http.api=web3,eth,net
+      --datadir=/var/lib/goethereum
+      --port=30303
+      --http.port=8545
+      --${NETWORK}
+      --metrics
+      --metrics.expensive
+      --pprof
+      --pprof.addr=0.0.0.0
+      --authrpc.jwtsecret=/var/lib/goethereum/ee-secret/jwtsecret
+      --authrpc.addr=0.0.0.0
+      --authrpc.port=8551
+      --authrpc.vhosts=*
+    env_file: .env
+    restart: always
