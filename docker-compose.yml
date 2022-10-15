@@ -52,7 +52,7 @@ services:
       --authrpc.addr=0.0.0.0
       --authrpc.port=8551
       --authrpc.vhosts=*
-      --cache=4096
+      --cache=${CACHE-1024}
     env_file: .env
     restart: always
   mevboost:
